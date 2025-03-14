@@ -68,13 +68,26 @@ export default defineNuxtConfig({
   
   // Configure Nitro (Nuxt server engine) for better performance
   nitro: {
+    preset: 'node-server',
     routeRules: {
       '/**': { 
         headers: { 
           'cache-control': 'public,max-age=3600'
         } 
       }
-    }
+    },
+    // Configuration for Cloud Run
+    runtimeConfig: {
+      // Public keys accessible on client
+      public: {
+        apiBase: '/api'
+      }
+    },
+    // Configure port for production
+    server: process.env.NODE_ENV === 'production' ? {
+      port: process.env.PORT || 8080,
+      host: '0.0.0.0'
+    } : undefined
   },
   
   app: {
