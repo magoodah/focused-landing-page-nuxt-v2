@@ -9,6 +9,7 @@
             <NuxtLink to="/#features" class="text-gray-700 hover:text-indigo-600">Features</NuxtLink>
             <NuxtLink to="/#testimonials" class="text-gray-700 hover:text-indigo-600">Testimonials</NuxtLink>
             <NuxtLink to="/#pricing" class="text-gray-700 hover:text-indigo-600">Pricing</NuxtLink>
+            <NuxtLink to="/blog" class="text-gray-700 hover:text-indigo-600">Blog</NuxtLink>
           </div>
         </div>
         <div class="flex items-center space-x-4">
