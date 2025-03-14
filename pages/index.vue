@@ -17,13 +17,13 @@
             Real-time distraction monitoring, voice coaching, and analytics for deeper work sessions.
           </p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4">
-            <a href="#signup" class="btn-primary flex items-center justify-center">
-              <span>Start Free Trial</span>
+            <a :href="getSignupUrl()" class="btn-primary flex items-center justify-center">
+              <span>Start Focusing</span>
             </a>
-            <a href="#demo" class="btn-secondary flex items-center justify-center">
+            <button @click="showVideoModal = true" class="btn-secondary flex items-center justify-center">
               <div v-html="featherIcon('play-circle')" class="mr-2"></div>
               <span>Watch Demo</span>
-            </a>
+            </button>
           </div>
           <p class="mt-4 text-sm text-gray-500">*No credit card required. 14-day free access to all features.</p>
         </div>
@@ -55,8 +55,8 @@
   <!-- Features Section -->
   <section id="features" class="py-16 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">Key Features</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Tools designed specifically for how your brain works</p>
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">How Focused Works</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">Intelligent tools built specifically for your ADHD/ADD brain</p>
       
       <!-- Feature Cards Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -74,11 +74,20 @@
               quality="80"
             />
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-3">Distraction Detection</h3>
-            <p class="text-gray-600">
-              AI monitors your screen to identify when you're getting off track, distinguishing between productive work and distractions.
-            </p>
+          <div class="p-5">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-3 mt-1">
+                <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                  <div v-html="featherIcon('eye')" class="w-4 h-4"></div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Distraction Detection</h3>
+                <p class="text-gray-600">
+                  AI instantly spots when you're off-track, keeping you focused on what matters.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -96,11 +105,20 @@
               quality="80"
             />
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-3">Focus Sessions</h3>
-            <p class="text-gray-600">
-              Customizable work intervals that adapt to your natural productivity rhythm, from Pomodoros to deep work marathons.
-            </p>
+          <div class="p-5">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-3 mt-1">
+                <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                  <div v-html="featherIcon('clock')" class="w-4 h-4"></div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Focus Sessions</h3>
+                <p class="text-gray-600">
+                  Work intervals that adapt to your rhythm—from short sprints to deep work marathons.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -119,11 +137,20 @@
               quality="80"
             />
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-3">Voice Coaching</h3>
-            <p class="text-gray-600">
-              Gentle, context-aware voice nudges when distracted, providing personalized guidance to bring you back to task.
-            </p>
+          <div class="p-5">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-3 mt-1">
+                <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                  <div v-html="featherIcon('volume-2')" class="w-4 h-4"></div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Voice Coaching</h3>
+                <p class="text-gray-600">
+                  Gentle voice nudges bring you back to task when your attention drifts.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -141,17 +168,26 @@
               quality="80"
             />
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-3">Focus Analytics</h3>
-            <p class="text-gray-600">
-              Gain insights about your productivity patterns, identifying peak focus hours and common distractions with our intuitive dashboard.
-            </p>
+          <div class="p-5">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 mr-3 mt-1">
+                <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                  <div v-html="featherIcon('bar-chart-2')" class="w-4 h-4"></div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold mb-2">Focus Analytics</h3>
+                <p class="text-gray-600">
+                  Discover your peak hours and common distractions with intuitive visual insights.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
       <div class="mt-12 text-center">
-        <a href="#signup" class="btn-primary">Try All Features Free</a>
+        <a :href="getSignupUrl()" class="btn-primary">Try All Features Free</a>
       </div>
     </div>
   </section>
@@ -207,7 +243,7 @@
       </div>
       
       <div class="text-center">
-        <a href="#signup" class="btn-primary">Get Started</a>
+        <a :href="getSignupUrl()" class="btn-primary">Get Started</a>
       </div>
     </div>
   </section>
@@ -228,7 +264,7 @@
       </div>
       
       <div class="mt-12 text-center">
-        <a href="#signup" class="btn-primary">Start Free Trial</a>
+        <a :href="getSignupUrl()" class="btn-primary">Start Free Trial</a>
       </div>
     </div>
   </section>
@@ -316,7 +352,7 @@
             </ul>
             
             <div class="mt-8">
-              <a href="#signup" class="block w-full py-3 px-4 text-center bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-medium rounded-md transition-colors">Start Free Trial</a>
+              <a :href="getSignupUrl()" class="block w-full py-3 px-4 text-center bg-indigo-50 hover:bg-indigo-100 text-indigo-600 font-medium rounded-md transition-colors">Start Free Trial</a>
             </div>
             <p class="text-xs text-gray-500 text-center mt-3">No credit card required</p>
           </div>
@@ -344,7 +380,7 @@
             </ul>
             
             <div class="mt-8">
-              <a href="#signup" class="block w-full py-3 px-4 text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors">Start 14-Day Free Trial</a>
+              <a :href="getSignupUrl()" class="block w-full py-3 px-4 text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors">Start 14-Day Free Trial</a>
             </div>
             <p class="text-xs text-gray-500 text-center mt-3">Cancel anytime. 30-day money-back guarantee.</p>
           </div>
@@ -393,7 +429,7 @@
       </div>
       
       <div class="mt-12 text-center">
-        <a href="#signup" class="btn-primary">Join Them Today</a>
+        <a :href="getSignupUrl()" class="btn-primary">Join Them Today</a>
       </div>
     </div>
   </section>
@@ -424,13 +460,13 @@
       </p>
       
       <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#signup" class="bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-md font-medium">
+        <a :href="getSignupUrl()" class="bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-md font-medium">
           Start Free Trial
         </a>
-        <a href="#demo" class="border border-white text-white hover:bg-indigo-700 px-6 py-3 rounded-md font-medium flex items-center justify-center">
+        <button @click="showVideoModal = true" class="border border-white text-white hover:bg-indigo-700 px-6 py-3 rounded-md font-medium flex items-center justify-center">
           <div v-html="featherIcon('play-circle')" class="mr-2"></div>
           <span>Watch Demo</span>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -443,12 +479,15 @@
         <div class="md:col-span-1">
           <div class="text-white font-bold text-2xl mb-4">Focused</div>
           <p class="text-gray-400 mb-4">AI-powered productivity tools that help you maintain concentration and achieve deeper work.</p>
+          <!-- Social media links hidden for now
           <div class="flex space-x-4 mt-6">
             <a v-for="(social, index) in socialLinks" :key="index" href="#" class="social-icon">
               <div v-html="featherIcon(social)"></div>
             </a>
           </div>
+          -->
         </div>
+        
         
         <!-- Navigation Links -->
         <div v-for="(footerSection, index) in footerLinks" :key="index">
@@ -464,16 +503,37 @@
       <div class="border-t border-gray-700 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm">© {{ new Date().getFullYear() }} Focused. All rights reserved.</p>
         <div class="mt-4 md:mt-0">
-          <a v-for="(link, index) in legalLinks" :key="index" 
-            href="#" class="text-gray-400 hover:text-indigo-400 text-sm mx-3">{{ link }}</a>
+          <NuxtLink 
+            v-for="(link, index) in legalLinks" 
+            :key="index" 
+            :to="link.url" 
+            class="text-gray-400 hover:text-indigo-400 text-sm mx-3"
+          >
+            {{ link.text }}
+          </NuxtLink>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Video Modal Component -->
+  <VideoModal 
+    :show="showVideoModal" 
+    @close="showVideoModal = false"
+    title="Watch Demo: Focused App"
+    video-id="a0CVCcb0RJM"
+  />
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import VideoModal from '~/components/VideoModal.vue';
+
+// Video modal state
+const showVideoModal = ref(false);
+
+// Get app URLs for signup/login links
+const { getSignupUrl } = useAppUrl();
 
 // How It Works section
 const activeStep = ref(1);
@@ -516,11 +576,15 @@ const iconSvg = {
   twitter: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>`,
   linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>`,
   instagram: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>`,
-  github: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`,
+  github: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77A5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`,
   menu: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`,
   check: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
   x: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`,
-  minus: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>`
+  minus: `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
+  eye: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+  clock: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`,
+  'volume-2': `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`,
+  'bar-chart-2': `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`
 };
 
 // Function to get the icon SVG
@@ -682,29 +746,30 @@ const footerLinks = [
     links: [
       { text: 'Features', url: '#features' },
       { text: 'Pricing', url: '#pricing' },
-      { text: 'Download', url: '#download' },
-      { text: 'Roadmap', url: '#roadmap' }
+      { text: 'Roadmap', url: 'https://befocused-dev.canny.io/' }
     ]
   },
   {
     title: 'Company',
     links: [
-      { text: 'About', url: '#about' },
-      { text: 'Blog', url: '#blog' },
-      { text: 'Careers', url: '#careers' },
-      { text: 'Contact', url: '#contact' }
+      { text: 'About', url: '/about' },
+      { text: 'Blog', url: '/blog' }
+      // Contact link commented out for now
+      // { text: 'Contact', url: '#contact' }
     ]
   },
   {
-    title: 'Support',
+    title: 'Legal',
     links: [
-      { text: 'Help Center', url: '#help' },
-      { text: 'Privacy Policy', url: '#privacy' },
-      { text: 'Terms of Service', url: '#terms' },
-      { text: 'Security', url: '#security' }
+      { text: 'Privacy Policy', url: '/privacy' },
+      { text: 'Terms of Service', url: '/terms' }
     ]
   }
 ];
 
-const legalLinks = ['Privacy', 'Terms', 'Cookies'];
+const legalLinks = [
+  { text: 'Privacy', url: '/privacy' },
+  { text: 'Terms', url: '/terms' },
+  { text: 'Cookies', url: '#cookies' }
+];
 </script>

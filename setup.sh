@@ -220,6 +220,29 @@ else
   echo "ngrok installation skipped as per user selection."
 fi
 
+# Setup environment variables
+echo ""
+echo "Setting up environment variables..."
+
+# Move back to the project root
+cd ../..
+
+# Check if .env exists, create it if not
+if [ ! -f ".env" ]; then
+  echo "Creating .env file..."
+  touch .env
+fi
+
+# Prompt for APP_URL
+if grep -q "APP_URL=" .env; then
+  echo "APP_URL environment variable already exists in .env"
+else
+  read -p "Enter APP_URL for production environment (default: https://app.befocused.ai): " app_url
+  app_url=${app_url:-https://app.befocused.ai}
+  echo "Adding APP_URL=$app_url to .env file..."
+  echo "APP_URL=$app_url" >> .env
+fi
+
 # Summary of installations
 echo ""
 echo "Setup completed successfully."
@@ -228,4 +251,5 @@ echo "Installation summary:"
 [[ $install_cloudsql -eq 1 ]] && echo "- Cloud SQL Proxy: Installed in $SOFTWARE_DIR"
 [[ $install_stripe -eq 1 ]] && echo "- Stripe CLI: Installed"
 [[ $install_ngrok -eq 1 ]] && echo "- ngrok: Installed"
+echo "- Environment variables: APP_URL configured in .env file"
 echo ""
