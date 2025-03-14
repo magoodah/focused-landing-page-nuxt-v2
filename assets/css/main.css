@@ -65,11 +65,15 @@ body {
   }
   
   .feature-card {
-    @apply bg-white rounded-lg overflow-hidden shadow-md border border-gray-100 transition-all duration-300;
+    @apply bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300;
   }
   
   .feature-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-1 shadow-lg border-indigo-200;
+  }
+  
+  .feature-card h3 {
+    @apply text-indigo-700;
   }
   
   .how-it-works-tab {
